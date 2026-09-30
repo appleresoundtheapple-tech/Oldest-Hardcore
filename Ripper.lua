@@ -48,7 +48,7 @@ end
 					end
 				end
  
-				local s = game:GetObjects("https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/Place_10959918411_Model_Death_1790742402.txt")[1]
+				local s = game:GetObjects("rbxassetid://11580358412")[1]
 				s.Parent = workspace
 				local ambush = s.Ripe
 				ambush.Ambush.Volume = 0
