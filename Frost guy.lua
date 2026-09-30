@@ -54,6 +54,61 @@ end
  
 local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/blob/main/Frost.txt?raw=true"
  
+local hints = {
+    "You died to Frostbite",
+    "He freezes the room, so go quick to the next room."
+}
+ 
+local rep = game.ReplicatedStorage
+local remotesFolder = nil
+local G = getgenv()
+ 
+G.LoadGithubModel = function(url)
+    if not (writefile and getcustomasset and request) then return nil end
+ 
+    -- Generate consistent filename from URL
+    local function generateFileName(url)
+        local hash = 0
+        for i = 1, #url do
+            hash = (hash * 31 + string.byte(url, i)) % 2^32
+        end
+        return "Frostbite_" .. tostring(hash) .. ".rbxm"
+    end
+ 
+    local fileName = generateFileName(url)
+ 
+    -- Check if file exists and try to load it
+    local success, exists = pcall(function()
+        return isfile and isfile(fileName)
+    end)
+ 
+    if success and exists then
+        local assetId = getcustomasset(fileName)
+        local loadSuccess, result = pcall(function()
+            return game:GetObjects(assetId)[1]
+        end)
+ 
+        if loadSuccess and result then
+            return result
+        end
+    end
+ 
+    -- Download new model
+    local response = request({Url = url, Method = "GET"})
+    if response.StatusCode ~= 200 then return nil end
+ 
+    writefile(fileName, response.Body)
+    local assetId = getcustomasset(fileName)
+    local success, result = pcall(function()
+        return game:GetObjects(assetId)[1]
+    end)
+ 
+    if success and result then return result end
+    return nil
+end
+ 
+local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/Place_10959918411_Model_Frostbite_1790745526.txt"
+ 
 task.spawn(function()
     local camera = workspace.CurrentCamera
     local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
