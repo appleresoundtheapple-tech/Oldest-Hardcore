@@ -52,7 +52,7 @@ G.LoadGithubModel = function(url)
     return nil
 end
  
-local frostURL = game:GetObjects("128834270067211")[1]
+local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/blob/main/frost.txt"
  
 task.spawn(function()
     local camera = workspace.CurrentCamera
