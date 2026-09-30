@@ -239,46 +239,7 @@ entity.Debug.OnEntitySpawned = function()
 end
 local despawnsnd
 entity.Debug.OnEntityDespawned = function(entity)
-	spawned = false
-	local Snd = Instance.new("Sound")
-	Snd.Volume = 1
-	Snd.Pitch = 0.1
-	Snd.SoundId = "rbxassetid://7757472223"
-	Snd.Parent = workspace
-	Snd.Volume = 10
-	Snd:Play()
-	despawnsnd = Snd
-	game.Debris:AddItem(Snd,25)
-	spawn(function()
-		while Snd.Playing do wait(5)
-			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 0 then
-				Snd:Destroy()
-			end
-		end
-	end)
-
-	local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
-	Reboundcolor.Name = "Despawn"
-	Reboundcolor.TintColor = Color3.fromRGB(255, 0, 4) Reboundcolor.Saturation = -0.7 Reboundcolor.Contrast = 0.2
-	game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
-	game.Debris:AddItem(Reboundcolor,40)
-	game.TweenService:Create(Snd,TweenInfo.new(23),{Volume = 0}):Play()
-	local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
-	local camera = workspace.CurrentCamera
-
-	local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
-		camera.CFrame = camera.CFrame * cf
-	end)
-	camShake:Start()
-	camShake:ShakeOnce(6,4,0.1,15)
-	if getgenv().death == true then
-		getgenv().Title = "A Nostalgic Fright" --Title Here
-		getgenv().Description = "So many familiar faces!" --Description Here
-		getgenv().Reason = "Sucessfully Survive MultiMonster." --Reason Here
-		getgenv().BadgeId = 2129311962  --Replace Number with Your Badge ID
-		getgenv().Category = 10 --You can replace the Category or dont
-
-		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+	    local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
 		local Achievements = debug.getupvalue(Unlock, 1)
 		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
 			v.Title = getgenv().Title
