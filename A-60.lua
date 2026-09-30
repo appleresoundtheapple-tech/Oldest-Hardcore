@@ -253,7 +253,6 @@ entity.Debug.OnEntityDespawned = function(entity)
 end
 
 entity.Debug.OnEntityStartMoving = function(entity)
-
 end
 
 ---------------------------
