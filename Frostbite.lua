@@ -16,7 +16,7 @@ G.LoadGithubModel = function(url)
         for i = 1, #url do
             hash = (hash * 31 + string.byte(url, i)) % 2^32
         end
-        return "frost_" .. tostring(hash) .. ".rbxm"
+        return "Frostbite_" .. tostring(hash) .. ".rbxm"
     end
  
     local fileName = generateFileName(url)
@@ -53,6 +53,8 @@ end
  
 local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/Place_10959918411_Model_Frostbite_1790745526.txt"
  
+local frostURL = "https://github.com/themasterman236-spec/Oldest-Hardcore/raw/main/Frostbite.rbxm"
+
 task.spawn(function()
     local camera = workspace.CurrentCamera
     local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
