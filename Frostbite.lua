@@ -51,7 +51,7 @@ G.LoadGithubModel = function(url)
     return nil
 end
 
-local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/blob/main/Frosty.txt?raw=true"
+local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/Frosty.txt"
 
 task.spawn(function()
     local camera = workspace.CurrentCamera
