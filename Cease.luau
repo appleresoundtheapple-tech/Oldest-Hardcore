@@ -15,40 +15,6 @@ local function MakeNormal(Light)
     end)
 end
 
-	        local sound5 = Instance.new("Sound")
-			sound5.PlaybackSpeed = 0.5
-			sound5.Volume = 10
-			sound5.SoundId = "rbxassetid://9125632539"
-			sound5.Parent = workspace
-			sound5:Play()
-
-			local pitch = Instance.new("PitchShiftSoundEffect")
-			pitch.Octave = 0
-			pitch.Parent = sound5
-
-			local sound51 = Instance.new("Sound")
-			sound51.PlaybackSpeed = 0.5
-			sound51.Volume = 10
-			sound51.SoundId = "rbxassetid://9125632539"
-			sound51.Parent = workspace
-			sound51:Play()
-
-			local pitch2 = Instance.new("PitchShiftSoundEffect")
-			pitch2.Octave = 1
-			pitch2.Parent = sound51
-
-			local pitch23 = Instance.new("PitchShiftSoundEffect")
-			pitch23.Octave = 0
-			pitch23.Parent = sound51
-
-			local eq = Instance.new("EqualizerSoundEffect")
-			eq.LowGain = 0
-			eq.MidGain = 0
-			eq.Parent = sound51
-			wait(3.50)
-			sound5:Destroy()
-			sound51:Destroy()
-
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
 -- Create entity
 local entity = Creator.createEntity({
