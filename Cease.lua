@@ -15,13 +15,6 @@ local function MakeNormal(Light)
     end)
 end
 
-    local s = workspace.Cease
-    local ambush = s:FindFirstChild("HSUR")
-    ambush.Rush.Volume = 10
-    ambush.Rush.RollOffMinDistance = 2
-    ambush.Rush.RollOffMaxDistance = 150
-    ambush.Silence:Play()
-
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
 -- Create entity
 local entity = Creator.createEntity({
