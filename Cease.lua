@@ -19,7 +19,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Cease", -- Custom name of your entity
-    Model = "rbxassetid://11547018893", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/RushCounterpart.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 150, -- Percentage, 100 = default Rush speed
     DelayTime = 0, -- Time before starting cycles (seconds)
     HeightOffset = 0.5,
