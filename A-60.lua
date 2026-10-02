@@ -235,8 +235,14 @@ entity.Debug.OnEntitySpawned = function()
 		end
 	end)
 end
+
 local despawnsnd
 entity.Debug.OnEntityDespawned = function(entity)
+local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+		camera.CFrame = camera.CFrame * cf
+	end)
+		camShake:Start()
+	camShake:ShakeOnce(5,45,0.1,20,2,20)
 	if getgenv().death == true then
 		getgenv().Title = "A nostalgic fright..." --Title Here
 		getgenv().Description = "Might Come back..." --Description Here
