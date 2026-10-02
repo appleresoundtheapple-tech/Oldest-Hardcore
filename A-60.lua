@@ -237,7 +237,24 @@ entity.Debug.OnEntitySpawned = function()
 end
 local despawnsnd
 entity.Debug.OnEntityDespawned = function(entity)
+	if getgenv().death == true then
+		getgenv().Title = "A nostalgic fright..." --Title Here
+		getgenv().Description = "Might Come back..." --Description Here
+		getgenv().Reason = "Encounter and survive the rare Entity called A-60" --Reason Here
+		getgenv().BadgeId = 2129311962  --Replace Number with Your Badge ID
+		getgenv().Category = 10 --You can replace the Category or dont
 
+		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
+		local Achievements = debug.getupvalue(Unlock, 1)
+		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
+			v.Title = getgenv().Title
+			v.Desc = getgenv().Description
+			v.Reason = getgenv().Reason
+			v.BadgeId = getgenv().BadgeId
+			v.Category = getgenv().Category
+		end
+		Unlock(nil,"Join")
+	end
 end
 
 entity.Debug.OnEntityStartMoving = function(entity)
