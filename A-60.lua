@@ -1,14 +1,11 @@
-wait(3.5)
 local Creator = loadstring(game:HttpGet("https://raw.githubusercontent.com/fernandesdasilvamariainez-coder/Aaaaaaa/refs/heads/main/Old%20Vynixu%20Entity%20Spawner"))()
 -- Create entity
 local entity = Creator.createEntity({
-	CustomName = "A-60", -- Custom name of your entity
 	Model = "https://github.com/themasterman236-spec/Oldest-Hardcore/raw/main/A-60.rbxm",
 	Speed = 350,
-	DelayTime = 1,
+	DelayTime = 3,
 	HeightOffset = 0.5,
 	CanKill = false,
-	BreakLights = false,
 	FlickerLights = {
 		false,
 		4,
@@ -16,12 +13,12 @@ local entity = Creator.createEntity({
 	Cycles = {
 		Min = 1,
 		Max = 4,
-		WaitTime = 0.05,
+		Time = 0.05,
 	},
 	CamShake = {
 		true,
 		{30, 30, 0.1, 1},
-		90,
+		50,
 	},
 	Jumpscare = {
 		false, -- Enabled ('false' if you don't want jumpscare)
@@ -54,6 +51,7 @@ local spawned = true
 
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function()
+	print("hi")
 	local function GetGitSound(GithubSnd,SoundName)
 		local url=GithubSnd
 		if not isfile(SoundName..".mp3") then
@@ -127,7 +125,7 @@ entity.Debug.OnEntitySpawned = function()
 						local randome = get[math.random(1,#get)]
 						Part.Main.Face.Texture = randome.Image
 
-						wait(Random.new():NextNumber(0,0.01))
+						wait(Random.new():NextNumber(0,0.02))
 
 					end
 				end)
@@ -139,10 +137,11 @@ entity.Debug.OnEntitySpawned = function()
 					v:Destroy()
 				end 
 			end
-			local EntityOffset = Vector3.new(0,-1.2,-6)
+			wait(0.5)
+			local EntityOffset = Vector3.new(0,-1.2,-5)
 			local LerpAlpha = 0.8
-			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOmg.mp3?raw=true","asixtyScareOmg") JumpscareSound.Parent = workspace
-			JumpscareSound.Volume = 6
+			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Roblox-Doors-Entities-Sounds/blob/main/asixtyScareOld.mp3?raw=true","asixtyScareOld") JumpscareSound.Parent = workspace
+			JumpscareSound.Volume = 10
 			JumpscareSound:Play()
 			camShake:ShakeOnce(15,15,0.1,4)
 			local JumpscareContrast = Instance.new("ColorCorrectionEffect",game.Lighting)
@@ -153,14 +152,13 @@ entity.Debug.OnEntitySpawned = function()
 				end
 				game.TweenService:Create(monster1,TweenInfo.new(1),{CFrame = Camera.CFrame*CFrame.new(Vector3.new(0,-1.2,450))}):Play()
 			end)
-			wait(0.5) Jumpscaring = false
+			wait(1) Jumpscaring = false
 			Gui.JumpscareEnd.Image = monster1:FindFirstChild("Main"):FindFirstChild("Face").Texture
-			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-15,15)}):Play()
-			DEATHMESSAGE({"You died to an entity designated as A-60.", "It can appear at any moment, a loud scream will anounce it's presence.", "When you hear it spawn, you must stay out of it's reach as soon as possible.", "It knows exactly where you are, so hiding in different places will not work..."},"MultiMonster")
+			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-20,20)}):Play()
 			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
-			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(100)
+			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(150)
 			wait(0.5)
-			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{ImageTransparency = 1}):Play()
+			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.6),{ImageTransparency = 1}):Play()
 			game.Debris:AddItem(monster1,1)
 
 		end
@@ -180,7 +178,7 @@ entity.Debug.OnEntitySpawned = function()
 
 	-------------------
 
-	local A60 =   workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print("killering")
+	local A60 =   workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print(A60.Name)
 	local deb = false
 	local function canSeeTarget(target,size)
 		if deb == true then
@@ -194,7 +192,7 @@ entity.Debug.OnEntitySpawned = function()
 
 
 		if hit then
-			if hit:IsDescendantOf(target) then print("killering")
+			if hit:IsDescendantOf(target) then print("Player is Died")
 				deb = true
 				if workspace.Ambience_Seek.Playing == true then
 					return
@@ -215,13 +213,13 @@ entity.Debug.OnEntitySpawned = function()
 		end
 	end
 	spawn(function()
-		while entity ~= nil do wait(0)
+		while entity ~= nil do wait(0.45)
 			local v = game.Players.LocalPlayer
 			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
 
 				local c = canSeeTarget(v.Character,50) 
 				if c == true then 
-					print("killering")
+					print("cansee")
 				end
 			end
 		end
@@ -233,16 +231,17 @@ entity.Debug.OnEntitySpawned = function()
 			local get = Part.IMAGEIDS:GetChildren()
 			local random = get[math.random(1,#get)]
 			Part.Main.Face.Texture = random.Image
-			wait(Random.new():NextNumber(0.04,0.05))
+			wait(Random.new():NextNumber(0.02,0.04))
 		end
 	end)
 end
-
 local despawnsnd
 entity.Debug.OnEntityDespawned = function(entity)
+
 end
 
 entity.Debug.OnEntityStartMoving = function(entity)
+
 end
 
 ---------------------------
