@@ -21,7 +21,7 @@ G.LoadGithubModel = function(url)
     return nil
 end
 
-local frostURL = "https://github.com/appleresoundtheapple-tech/Oldest-Hardcore/raw/main/Place_10959918411_Model_Frostbite_1788116100.rbxm"
+local frostURL = game:GetObjects("rbxassetid://128834270067211")[1]
 
 task.spawn(function()
     local camera = workspace.CurrentCamera
