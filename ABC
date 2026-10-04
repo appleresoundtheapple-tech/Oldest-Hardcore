@@ -17,7 +17,7 @@
 
 			local cors = {}
 			local mas = Instance.new("Model",game:GetService("Lighting"))
-			local Model0 = game:GetObjects("rbxassetid://12272255258")[1]
+			local Model0 = game:GetObjects("rbxassetid://117559561106172")[1]
 			local Part1 = Model0.FrostyNew
 			local Attachment1 = Part1.Attachment
 			Model0.Parent = workspace
