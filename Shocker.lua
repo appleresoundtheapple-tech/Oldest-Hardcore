@@ -88,7 +88,7 @@ local function HandleDeath()
                     Title = "Shocking Experience",
                     Desc = "That Scared Me!",
                     Reason = "Encounter Shocker.",
-                    Image = "rbxassetid://80265473527997"
+                    Image = "rbxassetid://80944202736640"
                 })
                 writefile("Shocker.txt", "Look at me.")
             end
