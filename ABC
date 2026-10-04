@@ -1,0 +1,147 @@
+			if (workspace.Ambience_Seek.Playing or workspace.Ambience_Figure.Playing or workspace.Ambience_FigureEnd.Playing or workspace.CurrentRooms:FindFirstChild("50")) then
+				a()
+				return
+			end
+			wait(0.01)
+			local player = game.Players.LocalPlayer
+			local Camera = workspace.CurrentCamera
+			local Character = player.Character or player.CharacterAdded:Wait()
+			local ReplicatedStorage = game:GetService("ReplicatedStorage")
+			local CameraShaker = require(game.ReplicatedStorage:WaitForChild("CameraShaker"))
+
+			local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+				Camera.CFrame = Camera.CFrame * shakeCf
+			end)
+
+			camShake:Start()
+
+			local cors = {}
+			local mas = Instance.new("Model",game:GetService("Lighting"))
+			local Model0 = game:GetObjects("rbxassetid://12272255258")[1]
+			local Part1 = Model0.FrostyNew
+			local Attachment1 = Part1.Attachment
+			Model0.Parent = workspace
+			--for i,v in pairs(mas:GetChildren()) do
+			--	v.Parent = workspace
+			--	pcall(function() v:MakeJoints() end)
+			--end
+			mas:Destroy()
+			for i,v in pairs(cors) do
+				spawn(function()
+					pcall(v)
+				end)
+			end
+
+			local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+			local eyes=Part1
+
+			local num=math.floor(#currentLoadedRoom.Nodes:GetChildren()/2)
+			eyes.CFrame=(
+				num==0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]
+			).CFrame+Vector3.new(0,11,0)
+
+			local ColorCorrectionEffect0 = Instance.new("ColorCorrectionEffect")
+			ColorCorrectionEffect0.Parent = game:GetService("Lighting")
+			ColorCorrectionEffect0.TintColor = Color3.new(1, 1, 1)
+			ColorCorrectionEffect0.Enabled = false
+
+			local c = camShake:StartShake(3.6,55,5)
+			Attachment1.face.Enabled = false
+			Attachment1.BlackTrail.Enabled = false
+			Attachment1.Heylois.Enabled = false
+			Attachment1.smoke.Enabled = true
+			Attachment1.BlackTrai3l.Enabled = true
+			Attachment1.BlackTrai2l.Enabled = true
+			Part1.Part.ParticleEmitter.Enabled = false
+			Part1["Static Effect"]:Play()
+			wait(5)
+			local Entity = Model0
+			local EntityPart = Part1
+			EntityPart["Static Effect"]:Play()
+			game.TweenService:Create(EntityPart["Static Effect"],TweenInfo.new(2),{Pitch = 0}):Play()
+			c:StartFadeOut(2.5)
+			wait(2)
+			local c2 = camShake:StartShake(2,55,25,nil,Vector3.new(5,5,5))
+			game.TweenService:Create(ColorCorrectionEffect0,TweenInfo.new(7),{TintColor = Color3.new(0.00784314, 0.188235, 1)}):Play()
+			local diediedie = true
+			spawn(function()
+				while wait(1) and diediedie do
+					local hum = Character:FindFirstChildOfClass("Humanoid")
+					if hum then
+						local lighter = Character:FindFirstChild("Lighter")
+						if lighter then
+							local EfH = lighter:FindFirstChild("EffectsHolder")
+							if EfH then
+								local asdasdasd = EfH.AttachOn 
+								if asdasdasd:FindFirstChildWhichIsA("ParticleEmitter").Enabled == false then
+									hum:TakeDamage(5)
+								end
+							end
+						else
+							hum:TakeDamage(5)
+						end
+					else
+						hum:TakeDamage(5)
+					end
+					if hum.Health < 10 then
+						DEATHMESSAGE({"You died to who you call FrostBite...","He will spawn in the middle and start freezing the room.","Find something that has heat to keep you warm!"},"FrostBite")
+					end
+				end
+			end)
+			ColorCorrectionEffect0.Enabled = true
+			Attachment1.face.Enabled = true
+			Attachment1.BlackTrail.Enabled = true
+			Attachment1.Heylois.Enabled = true
+			Attachment1.smoke.Enabled = true
+			Attachment1.BlackTrai3l.Enabled = true
+			Attachment1.BlackTrai2l.Enabled = true
+			Part1.Part.ParticleEmitter.Enabled = true
+			EntityPart.Ambience:Play()
+			EntityPart.AmbienceFar:Play()
+			game:GetService("ReplicatedStorage").GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
+			diediedie = false
+			c2:StartFadeOut(15)
+			c:StartFadeOut(1)
+			Part1["Static Effect"]:Stop()
+			EntityPart.Ambience:Stop()
+			EntityPart.AmbienceFar:Stop()
+
+			local Sound55 = Instance.new("Sound",Part1)
+			local FlangeSoundEffect1 = Instance.new("FlangeSoundEffect")
+			local DistortionSoundEffect2 = Instance.new("DistortionSoundEffect")
+			FlangeSoundEffect3 = Instance.new("FlangeSoundEffect")
+			Sound55.Name = "ahhhhhh"
+			Sound55.MaxDistance = 500
+			Sound55.Pitch = 0.23999999463558197
+			Sound55.PlaybackSpeed = 0.23999999463558197
+			Sound55.RollOffMode = Enum.RollOffMode.InverseTapered
+			Sound55.SoundId = "rbxassetid://6305809364"
+			FlangeSoundEffect1.Parent = Sound55
+			FlangeSoundEffect1.Rate = 0.75
+			FlangeSoundEffect1.Depth = 1
+			FlangeSoundEffect1.Mix = 0.7300000190734863
+			DistortionSoundEffect2.Parent = Sound55
+			DistortionSoundEffect2.Level = 0.9800000190734863
+			FlangeSoundEffect3.Parent = Sound55
+			FlangeSoundEffect3.Rate = 0.25
+			FlangeSoundEffect3.Depth = 1
+			FlangeSoundEffect3.Mix = 1
+			Sound55:Play()
+			Attachment1.face.Enabled = false
+			Attachment1.BlackTrail.Enabled = false
+			Attachment1.Heylois.Enabled = false
+			Attachment1.smoke.Enabled = true
+			Attachment1.BlackTrai3l.Enabled = true
+			Attachment1.BlackTrai2l.Enabled = true
+			Part1.Part.ParticleEmitter.Enabled = false
+			Sound55.Ended:Wait()
+			Attachment1.BlackTrai3l.Enabled = false
+			Attachment1.BlackTrai2l.Enabled = false
+			Attachment1.smoke.Enabled = false
+			wait(2)
+			Model0:Destroy()
+			game.TweenService:Create(ColorCorrectionEffect0,TweenInfo.new(7),{TintColor = Color3.new(1, 1, 1)}):Play()
+		end
+	end
+	a()
+end)
