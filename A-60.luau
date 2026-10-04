@@ -7,7 +7,7 @@ local entity = Creator.createEntity({
 	Speed = 350,
 	DelayTime = 1,
 	HeightOffset = 0.5,
-	CanKill = true,
+	CanKill = false,
 	BreakLights = false,
 	FlickerLights = {
 		false,
