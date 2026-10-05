@@ -2,7 +2,7 @@
 	local function a()
 		while true do
 			wait(1)
-			game.ReplicatedStorage.GameData.LatestRoom:GetPropertyChangedSignal("Value"):Wait()
+			game.ReplicatedStorage.GameData.LatestRoom
 			function DEATHMESSAGE(message,who)
 				spawn(function()
 					for i = 1,50 do wait()
